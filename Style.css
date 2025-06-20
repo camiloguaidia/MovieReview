@@ -1,0 +1,419 @@
+/* Estilo general */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+/* Encabezado */
+.top-header {
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo-titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.logo-titulo h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.eslogan {
+    font-size: 4rem;
+    font-weight: 300;
+    text-align: center;
+    margin: 40px 0 60px;
+}
+
+/* Formularios */
+.form-login,
+.form-busqueda {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 250px;
+}
+
+button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+button:hover {
+    background-color: #ccc;
+}
+
+/* Plataforma logos */
+.plataformas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 40px;
+}
+
+.plataformas a {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+.plataforma-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 150px;
+}
+
+.plataforma-item img {
+    border-radius: 10px;
+    transition: transform 0.3s;
+    width: 150px;
+    height: 220px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.plataforma-item img:hover {
+    transform: scale(1.1);
+}
+
+.plataforma-item .titulo-imagen {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 8px;
+    text-align: center;
+}
+
+/* Sección Recomendados */
+.recomendados {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-top: 50px;
+}
+
+/* Tarjetas de películas */
+.peliculas-series {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+/* Espacio para futuras tarjetas de películas */
+
+textarea {
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    resize: vertical;
+    border: none;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
+    color: white;
+    font-size: 0.9rem;
+    margin-top: 40px;
+}
+
+/* Botón para ver detalles */
+.ver-detalles-btn {
+    margin-top: 10px;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.ver-detalles-btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Sección de detalles ocultos */
+#detalle-pelicula {
+    display: none;
+    padding: 40px;
+    background-color: #222;
+    color: #fff;
+    border-top: 2px solid #555;
+    margin-top: 60px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.705);
+    text-align: center;
+}
+
+#detalle-pelicula.active {
+    display: block;
+}
+.carrito-container {
+    background-color: #111;
+    padding: 20px;
+    color: white;
+    max-width: 300px;
+    border-radius: 10px;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    text-align: center;
+}
+
+.btn-carrito {
+    margin-top: 10px;
+    background-color: #fff;
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.btn-carrito:hover {
+    background-color: #ccc;
+}
+.form-usuario {
+    background-color: #111;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 300px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.form-usuario input {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
+.usuario-container {
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+}
+#contenido {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#contenido.active {
+    display: block;
+    opacity: 1;
+}
+.carrito-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #111;
+    padding: 15px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.705);
+    max-width: 250px;
+    z-index: 1000;
+}
+
+.carrito-container h3 {
+    margin: 0 0 10px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.carrito-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.carrito-container li {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.carrito-container button {
+    margin-top: 10px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.carrito-container button:hover {
+    background-color: #ccc;
+}
+body {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/fondo-login.jpg') center/cover no-repeat fixed;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  #autenticacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.705);
+    backdrop-filter: blur(5px);
+    text-align: center;
+  }
+
+  .form-usuario {
+    background-color: rgba(0, 0, 0, 0.705);
+    padding: 25px;
+    margin: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.705);
+  }
+
+  .form-usuario input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  .form-usuario button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #12093b;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .form-usuario button:hover {
+    background-color: #12093b;
+  }
+
+  h2, h3 {
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  #contenido {
+    display: none;
+  }
+    body {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+            url('img/logo\ MR.png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  #autenticacion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    text-align: center;
+  }
+
+  .form-usuario {
+    background-color: rgb(0, 0, 0);
+    padding: 25px;
+    margin: 15px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    width: 300px;
+  }
+
+  .form-usuario input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  .form-usuario button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #0e0430;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .form-usuario button:hover {
+    background-color: #0e0430;
+  }
+
+  h2, h3 {
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  #contenido {
+    display: none;
+  }

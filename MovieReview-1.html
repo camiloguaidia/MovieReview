@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Review</title>
+  <link rel="stylesheet" href="Style.css">
+  <link rel="icon" href="img/logo MR.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+  <script src="Movie.js" defer></script>
+</head>
+<body>
+  <!-- 🔐 Autenticación (se muestra primero) -->
+  <div id="autenticacion" style="text-align:center; padding: 30px;">
+   <img src="img/logo MR.png" alt="Logo de Movie Review" width="50" height="50">
+        <h1>Bienvenidos a MovieReview</h1>
+
+    <div id="form-registro" class="form-usuario">
+      <h3>Registro</h3>
+      <input type="text" id="registro-nombre" placeholder="Nombre" required>
+      <input type="email" id="registro-email" placeholder="Correo electrónico" required>
+      <input type="password" id="registro-pass" placeholder="Contraseña" required>
+      <button onclick="registrarUsuario()">Registrarse</button>
+    </div>
+
+    <div id="form-login" class="form-usuario">
+      <h3>Iniciar sesión</h3>
+      <input type="email" id="login-email" placeholder="Correo" required>
+      <input type="password" id="login-pass" placeholder="Contraseña" required>
+      <button onclick="iniciarSesion()">Iniciar sesión</button>
+    </div>
+  </div>
+
+  <!-- 🟩 Contenido principal oculto inicialmente -->
+  <div id="contenido" style="display: none;">
+    <header class="top-header">
+      <div class="logo-titulo">
+        <img src="img/logo MR.png" alt="Logo de Movie Review" width="50" height="50">
+        <h1>MovieReview</h1>
+      </div>
+      <h3 class="eslogan">Top cinematográfico</h3>
+
+      <div id="usuario-container" class="usuario-container">
+        <p id="mensaje-usuario"></p>
+        <button id="btn-logout" onclick="cerrarSesion()" style="display: none;">Cerrar sesión</button>
+      </div>
+
+      <!-- 🔍 Buscador -->
+      <input type="text" id="buscador-peliculas" placeholder="Buscar película disponible..." style="margin-top: 20px; padding: 10px; border-radius: 5px; width: 300px; border: none;">
+    </header>
+
+    <!-- 🛒 Carrito -->
+    <div id="carrito" class="carrito-container">
+      <h3>🛒 Carrito</h3>
+      <ul id="lista-carrito"></ul>
+      <button onclick="vaciarCarrito()">Vaciar carrito</button>
+    </div>
+
+    <section>
+      <p class="descripcion" style="text-align: center;">
+        Movie Review es una plataforma web diseñada para recopilar, comparar y unificar el séptimo arte.
+      </p>
+
+      <!-- 🎬 Galería de películas -->
+      <div class="plataformas">
+        <!-- Películas cargadas -->
+       <div class="plataforma-item" onclick="mostrarDetalle('Alicia en el País de las Maravillas', 'Una niña curiosa cae en un mundo mágico lleno de criaturas extravagantes.', 'img/alicia.jpg')">
+                <img src="img/alicia.jpg" alt="Alicia">
+                <div class="titulo-imagen">Alicia en el País...</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Alicia')">Agregar al carrito</button>
+            </div>         
+            <div class="plataforma-item" onclick="mostrarDetalle('Beetlejuice', 'Una pareja fantasmal contrata a un bioexorcista para expulsar a los nuevos inquilinos.', 'img/beetlejuice.jpeg')">
+                <img src="img/beetlejuice.jpeg" alt="Beetlejuice">
+                <div class="titulo-imagen">Beetlejuice</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Beetlejuice')">Agregar al carrito</button>
+            </div>
+            <div class="plataforma-item" onclick="mostrarDetalle('La Mascara', 'Un hombre común encuentra una máscara mágica que le otorga poderes ilimitados y una personalidad desenfrenada.', 'img/La mascara.jpg')">
+                <img src="img/La mascara.jpg" alt="La Mascara">
+                <div class="titulo-imagen">La Mascara</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'La Mascara')">Agregar al carrito</button>
+            </div>
+            <div class="plataforma-item" onclick="mostrarDetalle('El Club de la Pelea', 'Un narrador insomne forma un club secreto de peleas para desahogar su frustración.', 'img/club.jpg')">
+                <img src="img/club.jpg" alt="El Club de la Pelea">
+                <div class="titulo-imagen">El Club De La Pelea</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'El Club De La Pelea')">Agregar al carrito</button>
+            </div>
+             <div class="plataforma-item" onclick="mostrarDetalle('El Cadáver De La Novia', 'Un joven accidentalmente se casa con una novia del más allá.', 'img/corpse.jpg')">
+                <img src="img/corpse.jpg" alt="El Cadáver de la Novia">
+                <div class="titulo-imagen">El Cadáver De...</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'El Cadaver De La Novia')">Agregar al carrito</button>
+            </div>
+            <div class="plataforma-item" onclick="mostrarDetalle('Frankenweenie', 'Un niño revive a su perro usando la ciencia, con consecuencias sorprendentes.', 'img/frankenweene.jpeg')">
+                <img src="img/frankenweene.jpeg" alt="Frankenweenie">
+                <div class="titulo-imagen">Frankenweenie</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Frankenweenie')">Agregar al carrito</button>
+            </div>
+             <div class="plataforma-item" onclick="mostrarDetalle('Mars Attacks', 'Extraterrestres invaden la Tierra causando caos en todo el mundo.', 'img/mars.jpg')">
+                <img src="img/mars.jpg" alt="Marte Ataca">
+                <div class="titulo-imagen">Mars Attacks</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Mars Attacks')">Agregar al carrito</button>
+            </div>
+             <div class="plataforma-item" onclick="mostrarDetalle('El Resplandor', 'Un hombre pierde la cordura en un hotel aislado durante el invierno.', 'img/resplandor.jpeg')">
+                <img src="img/resplandor.jpeg" alt="El Resplandor">
+                <div class="titulo-imagen">El Resplandor</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'El Resplandor')">Agregar al carrito</button>
+            </div>
+             <div class="plataforma-item" onclick="mostrarDetalle('Saw', 'Dos hombres despiertan encadenados en una habitación, parte de un juego macabro.', 'img/saw.jpg')">
+                <img src="img/saw.jpg" alt="Saw">
+                <div class="titulo-imagen">Saw</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Saw')">Agregar al carrito</button>
+            </div>
+            <div class="plataforma-item" onclick="mostrarDetalle('El Callejon De Las Almas Perdidas', 'Un estafador se une a una psiquiatra para manipular a personas ricas con problemas mentales.', 'img/el callejon.jpeg')">
+                <img src="img/el callejon.jpeg" alt="El callejon">
+                <div class="titulo-imagen">El Callejon De Las Almas Perdidas</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'El Callejon De Las Almas Perdidas')">Agregar al carrito</button>
+            </div>
+             <div class="plataforma-item" onclick="mostrarDetalle('El Gato Con Botas El Ultimo Deseo', 'El Gato con Botas descubre que ha agotado ocho de sus nueve vidas y se embarca en una aventura para restaurarlas.', 'img/el ultimo deseo.jpeg')">
+                <img src="img/el ultimo deseo.jpeg" alt="el gato">
+                <div class="titulo-imagen">El Gato Con Botas El Ultimo Deseo</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'El Gato Con Botas')">Agregar al carrito</button>
+            </div>
+             <div class="plataforma-item" onclick="mostrarDetalle('Cuestion De Tiempo.', 'Un joven descubre que puede viajar en el tiempo y usa su poder para mejorar su vida amorosa.', 'img/cuestion de tiempo.jpg')">
+                <img src="img/cuestion de tiempo.jpg" alt="Cuestion De Tiempo">
+                <div class="titulo-imagen">Cuestion De Tiempo</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Cuestion DE Tiempo')">Agregar al carrito</button>
+            </div>
+            <div class="plataforma-item" onclick="mostrarDetalle('El Menu.', 'Una joven pareja visita un restaurante exclusivo en una isla remota donde se sirve un menú con sorpresas escalofriantes.', 'img/el-menu.jpg')">
+                <img src="img/el-menu.jpg" alt="El Menu">
+                <div class="titulo-imagen">El Menu</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'El Menu')">Agregar al carrito</button>
+            </div>
+             <div class="plataforma-item" onclick="mostrarDetalle('Harry Potter La Orden Del Fenix', 'Harry debe enfrentar las consecuencias de su enfrentamiento con Voldemort mientras lidera a sus compañeros para prepararse contra la amenaza.', 'img/harry potter la orden del fenix.jpeg')">
+                <img src="img/harry potter la orden del fenix.jpeg" alt="Harry Potter">
+                <div class="titulo-imagen">Harry Potter La Orden Del Fenix</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Harry Potter La Orden Del Fenix ')">Agregar al carrito</button>
+            </div>
+             <div class="plataforma-item" onclick="mostrarDetalle('Harry Potter Y La Piedra Filosofal', 'Harry descubre que es un mago y asiste a Hogwarts, donde se enfrenta a su destino por primera vez.', 'img/Harry Potter y la piedra filosofal.jpg')">
+                <img src="img/Harry Potter y la piedra filosofal.jpg" alt="Harry Potter 1">
+                <div class="titulo-imagen">Harry Potter Y La Piedra Filosofal</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Harry Potter Y La Piedra Filosofal')">Agregar al carrito</button>
+            </div>
+            <div class="plataforma-item" onclick="mostrarDetalle('Harry Potter Y La Camara De Los Secretos', 'En su segundo año en Hogwarts, Harry investiga una serie de ataques mágicos relacionados con una cámara secreta.', 'img/harry1.jpg')">
+                <img src="img/harry1.jpg" alt="Harry Potter 1">
+                <div class="titulo-imagen">Harry Potter Y La Camara De Los Secretos</div>
+                <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Harry Potter Y La Camara De Los Secretos')">Agregar al carrito</button>
+            </div>
+        <div class="plataforma-item" onclick="mostrarDetalle('Batman', 'El caballero oscuro protege Ciudad Gótica enfrentando sus peores enemigos.', 'img/batman.jpg')">
+          <img src="img/batman.jpg" alt="Batman">
+          <div class="titulo-imagen">Batman</div>
+          <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Batman')">Agregar al carrito</button>
+        </div>
+        <div class="plataforma-item" onclick="mostrarDetalle('Matrix', 'Un hacker descubre que vive en una simulación controlada por máquinas.', 'img/matrix.jpg')">
+          <img src="img/matrix.jpg" alt="Matrix">
+          <div class="titulo-imagen">Matrix</div>
+          <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Matrix')">Agregar al carrito</button>
+        </div>
+        <div class="plataforma-item" onclick="mostrarDetalle('Titanic', 'Una historia de amor trágica a bordo del famoso barco hundido.', 'img/titanic.jpg')">
+          <img src="img/titanic.jpg" alt="Titanic">
+          <div class="titulo-imagen">Titanic</div>
+          <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Titanic')">Agregar al carrito</button>
+        </div>
+        <div class="plataforma-item" onclick="mostrarDetalle('Dumbo', 'Un elefante con orejas gigantes descubre que puede volar.', 'img/dumbo.jpg')">
+          <img src="img/dumbo.jpg" alt="Dumbo">
+          <div class="titulo-imagen">Dumbo</div>
+          <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Dumbo')">Agregar al carrito</button>
+        </div>
+        <div class="plataforma-item" onclick="mostrarDetalle('Shrek', 'Un ogro gruñón debe rescatar a una princesa con la ayuda de un burro parlante.', 'img/shrek.jpg')">
+          <img src="img/shrek.jpg" alt="Shrek">
+          <div class="titulo-imagen">Shrek</div>
+          <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Shrek')">Agregar al carrito</button>
+        </div>
+        <div class="plataforma-item" onclick="mostrarDetalle('El Conjuro', 'Una familia enfrenta fenómenos paranormales y busca ayuda de investigadores.', 'img/conjuring.jpeg')">
+          <img src="img/conjuring.jpeg" alt="El Conjuro">
+          <div class="titulo-imagen">El Conjuro</div>
+          <button class="btn-carrito" onclick="agregarAlCarrito(event, 'El Conjuro')">Agregar al carrito</button>
+        </div>
+        <div class="plataforma-item" onclick="mostrarDetalle('Efecto Mariposa', 'Un joven descubre que puede cambiar su pasado con consecuencias inesperadas.', 'img/efecto.jpg')">
+          <img src="img/efecto.jpg" alt="Efecto Mariposa">
+          <div class="titulo-imagen">Efecto Mariposa</div>
+          <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Efecto Mariposa')">Agregar al carrito</button>
+        </div>
+        <div class="plataforma-item" onclick="mostrarDetalle('Fast & Furious 7', 'Dom y su equipo enfrentan nuevos desafíos con autos y adrenalina.', 'img/fast 7.jpg')">
+          <img src="img/fast 7.jpg" alt="Fast 7">
+          <div class="titulo-imagen">Fast & Furious 7</div>
+          <button class="btn-carrito" onclick="agregarAlCarrito(event, 'Fast 7')">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <!-- 📄 Detalle de película -->
+      <section id="detalle-pelicula" class="detalle-pelicula">
+        <h2 id="detalle-titulo"></h2>
+        <img id="detalle-img" src="" alt="" style="width:200px; border-radius:10px; margin-bottom:20px;">
+        <p id="detalle-descripcion"></p>
+      </section>
+
+      <h2 class="recomendados">Recomendados</h2>
+      <section class="peliculas-series">
+        <!-- Tarjetas futuras -->
+      </section>
+    </section>
+
+    <footer>
+      <p>© 2025 Movie Review. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+
+  <!-- Detalle JS -->
+  <script>
+    function mostrarDetalle(titulo, descripcion, imagen) {
+      const seccion = document.getElementById('detalle-pelicula');
+      document.getElementById('detalle-titulo').textContent = titulo;
+      document.getElementById('detalle-descripcion').textContent = descripcion;
+      document.getElementById('detalle-img').src = imagen;
+      seccion.classList.add('active');
+      seccion.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
